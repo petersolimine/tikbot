@@ -13,7 +13,6 @@
   "author": "Peter Solimine",
   "license": "MIT",
   "dependencies": {
-    "@antiadmin/anticaptchaofficial": "^1.0.14",
     "chrome-aws-lambda": "^7.0.0",
     "fs": "0.0.1-security",
     "puppeteer-core": "^7.0.4",
