@@ -1,11 +1,13 @@
-const chromium = require('chrome-aws-lambda');
+const {login} = require('./manualLogin');
+
+//login();
+
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
-const login_time = 120000; //60 seconds
 fs = require('fs');
 
-const login = async () => {
+const cookieLogin = async () => {
     try{
         let browser = await puppeteer.launch({
             args: ['--disable-web-security', '--disable-features=IsolateOrigins,site-per-process'],
@@ -17,20 +19,22 @@ const login = async () => {
         const page = await browser.newPage();
         page.setDefaultNavigationTimeout(30000); //30 seconds
         
-        await page.goto("https://www.tiktok.com/login/");
-        await page.waitFor(login_time);
 
-        var cookieList = await page._client.send('Network.getAllCookies');
-        console.log(cookieList);
         if(cookieList){
-            await fs.writeFile('private/myCookies.json', JSON.stringify(cookieList), function (err) {
+            await fs.readFile('private/myCookies.json', function (err) {
                 if (err) return console.log(err);
-                console.log('View your cookies here > /private/myCookies.json');
+                console.log('cookieLogin worked');
               });
         }
+
+
+
+        await page.setCookie(...cookies);
+        await page.waitFor(5000);
+
+        await page.goto("https://www.tiktok.com/login/");
+        console.og('done');
     }catch(err){
         console.log("failed with below error. Try again... \n",err.message);
     }
 }
-
-exports.login = login;
