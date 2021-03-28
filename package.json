@@ -1,0 +1,19 @@
+{
+  "name": "tiktok-bot",
+  "version": "1.0.0",
+  "description": "tiktok growth bot that automatically likes and follows users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petersolimine/tiktok-growth-bot.git"
+  },
+  "author": "Peter Solimine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/petersolimine/tiktok-growth-bot/issues"
+  },
+  "homepage": "https://github.com/petersolimine/tiktok-growth-bot#readme"
+}
