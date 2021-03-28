@@ -1,6 +1,3 @@
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-import { ANTI_CAPTCHA_KEY } from './consts.js'
 const chromium = require('chrome-aws-lambda');
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
