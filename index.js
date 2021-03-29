@@ -1,4 +1,10 @@
 const {login} = require('./manualLogin');
+const like_min = 50;
+const like_max = 1000000; //1m
+const follower_min = 40;
+const follower_max = 5000;
+const following_min = 30;
+const folowing_max = 100000;
 
 //login();
 
@@ -84,18 +90,29 @@ const cookieLogin = async () => {
         //wait 10s
         page.waitFor(10000);
         //find follow buttons
-        const divTags = await page.$$('div');
-        for (const divTag of divTags) {
-        const label = await page.evaluate(el => el.innerText, divTag);
+        const btnTags = await page.$$('button');
+        for (const btnTag of btnTags) {
+        const label = await page.evaluate(el => el.innerText, btnTag);
+        var counter = 1;
         //await console.log(label.toString());
-            if(label.toString() == 'Follow'){
+            if(label.toString() == 'Follow' && counter < 5){
                 console.log(label.toString());
-                await divTag.click();
+                await btnTag.click();
+                counter++;
                 //don't break because there are multiple things that say "launch meeting"
-                await page.waitFor(10000);
+                await page.waitFor(1000);
             }
-            
-        }  
+            break;      
+        }
+        //next
+        await page.click('.recommend-item');
+        await page.waitFor(6000);
+        await page.click('.comp-card-cover');
+        await page.waitFor(6000);
+        await page.click('.heart-twink');
+        await page.waitFor(6000);
+        await page.goBack();
+        //await page.click('.follow-show-more');
         
         await page.waitFor(100000);
     }
