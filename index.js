@@ -3,7 +3,7 @@ const like_min = 50;
 const like_max = 1000000; //1m
 const follower_min = 40;
 const follower_max = 5000;
-const following_min = 30;
+const following_min = 200;
 const folowing_max = 100000;
 
 //login();
