@@ -33,4 +33,6 @@ const login = async () => {
     }
 }
 
+login();
+
 exports.login = login;
