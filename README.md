@@ -8,5 +8,5 @@ Javascript Setup:
 5. Then your cookies are saved to /private/cookies and for subsequent runs you will have an auto cookie injection
 6. Any time you log out of tiktok, you'll need to redo step 4
 
-**note: currently broken. Working on fix **
+**note: currently broken. Working on fix
 
